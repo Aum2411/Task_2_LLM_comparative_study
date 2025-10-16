@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Response Comparative Study</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 LLM Response Comparative Study</h1>
+            <p class="subtitle">Compare responses with and without system prompts using Groq API</p>
+        </header>
+
+        <div class="input-section">
+            <div class="prompt-card">
+                <label for="user-prompt">
+                    <span class="label-icon">👤</span>
+                    User Prompt
+                </label>
+                <textarea 
+                    id="user-prompt" 
+                    placeholder="Enter your question or prompt here..."
+                    rows="4"
+                ></textarea>
+            </div>
+
+            <div class="prompt-card">
+                <label for="system-prompt">
+                    <span class="label-icon">⚙️</span>
+                    System Prompt (Optional)
+                </label>
+                <textarea 
+                    id="system-prompt" 
+                    placeholder="Enter a system prompt to guide the LLM's behavior (e.g., 'You are a helpful assistant that explains concepts in simple terms')"
+                    rows="4"
+                ></textarea>
+            </div>
+
+            <button id="compare-btn" class="compare-btn">
+                <span class="btn-text">Compare Responses</span>
+                <span class="loader" style="display: none;"></span>
+            </button>
+        </div>
+
+        <div id="results" class="results-section" style="display: none;">
+            <h2>📊 Comparison Results</h2>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>Response A: User Prompt Only</h3>
+                        <span class="badge badge-a">Without System Prompt</span>
+                    </div>
+                    <div class="result-content" id="response-without-system">
+                        <!-- Response will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>Response B: User + System Prompt</h3>
+                        <span class="badge badge-b">With System Prompt</span>
+                    </div>
+                    <div class="result-content" id="response-with-system">
+                        <!-- Response will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-section">
+                <h3>📝 Key Observations</h3>
+                <ul class="observations">
+                    <li><strong>Response A</strong> uses only the user's prompt without any contextual guidance</li>
+                    <li><strong>Response B</strong> is influenced by the system prompt, which can control tone, style, and behavior</li>
+                    <li>System prompts help ensure consistent and predictable responses</li>
+                    <li>Compare the differences in tone, detail level, and formatting between both responses</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
